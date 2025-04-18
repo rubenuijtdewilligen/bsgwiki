@@ -837,6 +837,14 @@ if (file_exists(DOKU_TPLINC."lang/".$conf["lang"]."/style.css")){
         }
     }
     ?>
+    <li id="footer-info-lastmod">
+      <?php tpl_pageinfo()?><br />
+    </li>
+
+    <li id="footer-info-lastmod">
+      Ontwerp en hosting: 
+    <bdi><a href="https://rbnu.nl" class="urlextern">Ruben Uijtdewilligen</a></bdi>
+    </li>
   </ul>
   <ul id="footer-places">
     <li><?php
