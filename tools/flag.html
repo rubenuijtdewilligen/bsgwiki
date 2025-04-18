@@ -1,0 +1,42 @@
+<!-- Used to generate flag of Noord-Brabant as a page header -->
+
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flag of Noord-Brabant</title>
+    <style>
+      canvas {
+        border: 1px solid #000;
+        display: block;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="flag" width="20000" height="300"></canvas>
+
+    <script>
+      const canvas = document.getElementById("flag");
+      const ctx = canvas.getContext("2d");
+
+      const rows = 3;
+      const cols = 200;
+      const cellWidth = canvas.width / cols;
+      const cellHeight = canvas.height / rows;
+
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const isRed = (row + col) % 2 === 0;
+          ctx.fillStyle = isRed ? "#C23C28" : "#FFFFFF";
+          ctx.fillRect(
+            col * cellWidth,
+            row * cellHeight,
+            cellWidth,
+            cellHeight
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
