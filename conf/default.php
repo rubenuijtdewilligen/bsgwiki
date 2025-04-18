@@ -41,12 +41,12 @@ $conf["vector_discuss"]    = 1; //1: use/show discussion pages
 $conf["vector_discuss_ns"] = ":talk:"; //namespace to use for discussion page storage
 
 //site notice
-$conf["vector_sitenotice"]           = 1; //1: use/show sitenotice
+$conf["vector_sitenotice"]           = 0; //1: use/show sitenotice
 $conf["vector_sitenotice_location"]  = ":wiki:site_notice"; //page/article used to store the sitenotice
 $conf["vector_sitenotice_translate"] = 1; //1: load translated sitenotice if translation plugin is available (see <https://www.dokuwiki.org/plugin:translation>)
 
 //navigation
-$conf["vector_navigation"]           = 1; //1: use/show navigation
+$conf["vector_navigation"]           = 0; //1: use/show navigation
 $conf["vector_navigation_location"]  = ":wiki:navigation"; //page/article used to store the navigation
 $conf["vector_navigation_translate"] = 1; //1: load translated navigation if translation plugin is available (see <https://www.dokuwiki.org/plugin:translation>)
 
@@ -61,7 +61,7 @@ $conf["vector_toolbox_default"]  = 1; //1: use default toolbox (if toolbox is en
 $conf["vector_toolbox_location"] = ":wiki:toolbox"; //page/article used to store a custom toolbox
 
 //qr code box
-$conf["vector_qrcodebox"] = 1; //1: use/show box with QR Code of current page's URL
+$conf["vector_qrcodebox"] = 0; //1: use/show box with QR Code of current page's URL
 
 //custom copyright notice
 $conf["vector_copyright"]           = 1; //1: use/show copyright notice
@@ -79,7 +79,7 @@ $conf["vector_toc_position"] = "article"; //article: show TOC embedded within th
 //other stuff
 $conf["vector_breadcrumbs_position"]  = "bottom"; //position of breadcrumbs navigation ("top" or "bottom")
 $conf["vector_youarehere_position"]   = "top"; //position of "you are here" navigation ("top" or "bottom")
-$conf["vector_cite_author"]           = "Anonymous Contributors"; //name to use for the author on the citation page
+$conf["vector_cite_author"]           = "Het Brabants Studenten Gilde"; //name to use for the author on the citation page
 $conf["vector_loaduserjs"]            = 0; //1: vector/user/user.js will be loaded
 $conf["vector_closedwiki"]            = 0; //1: hides most tabs/functions until user is logged in
 
