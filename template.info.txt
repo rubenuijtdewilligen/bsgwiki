@@ -1,7 +1,7 @@
-base     wikiweko
-author   Ruben Carlo Benante
-email    rcb@beco.cc
-date     2021-06-06
-name     WikiWeko Template
-desc     Gives you a all-devices friendly 2021 MediaWiki/Wikipedia Look-and-Feel for DokuWiki 
-url      https://www.dokuwiki.org/template:wikiweko
+base     bsgwiki
+author   Ruben Uijtdewilligen, Ruben Carlo Benante
+email    ruben@uijtdewilligenbv.nl
+date     2025-04-18
+name     BSGwiki
+desc     DokuWiki template for BSG (Het Brabants Studenten Gilde), based on work by Ruben Carlo Benante
+url      https://wiki.hetbsg.nl
