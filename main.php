@@ -846,16 +846,6 @@ if (file_exists(DOKU_TPLINC."lang/".$conf["lang"]."/style.css")){
     <bdi><a href="https://rbnu.nl" class="urlextern">Ruben Uijtdewilligen</a></bdi>
     </li>
   </ul>
-  <ul id="footer-places">
-    <li><?php
-        //show buttons, see vector/user/buttons.php to configure them
-        if (!empty($_vector_btns) &&
-            is_array($_vector_btns)){
-            _vector_renderButtons($_vector_btns);
-        }
-        ?>
-    </li>
-  </ul>
   <div style="clearer"></div>
 </div>
 <!-- end footer -->
