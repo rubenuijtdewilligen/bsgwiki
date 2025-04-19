@@ -837,9 +837,6 @@ if (file_exists(DOKU_TPLINC."lang/".$conf["lang"]."/style.css")){
         }
     }
     ?>
-    <li id="footer-info-lastmod">
-      <?php tpl_pageinfo()?><br />
-    </li>
 
     <li id="footer-info-credits">
       Ontwerp en hosting: 
