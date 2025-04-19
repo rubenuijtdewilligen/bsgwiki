@@ -1,0 +1,123 @@
+<!-- (c) Ruben Uijtdewilligen (ruben@uijtdewilligenbv.nl) -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Landdagen Kaart</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background-color: #fff;
+      }
+
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+
+      .white-dot {
+        background: white;
+        border-radius: 100%;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      const map = L.map("map", {
+        zoomControl: false,
+        attributionControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+      }).setView([51.6, 5.1], 9);
+
+      fetch("brabant.geojson")
+        .then((response) => response.json())
+        .then((data) => {
+          const layer = L.geoJSON(data, {
+            style: {
+              color: "#c23c28",
+              weight: 0,
+              fillColor: "#c23c28",
+              fillOpacity: 1,
+            },
+          }).addTo(map);
+
+          map.fitBounds(layer.getBounds());
+        })
+        .catch((error) => console.error("Error loading geoJSON:", error));
+
+      function fetchCSVData() {
+        fetch(
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsJU4eJUM-MF6y14N61dtw5y5XMOA_Dy14Iv_h_Z4up-0H4Xa3lZnAjDRq4L-WiUkxylcu4WeIu3sn/pub?gid=2097569858&single=true&output=csv"
+        )
+          .then((response) => response.text())
+          .then((csvText) => {
+            const places = parseCSV(csvText);
+            console.log(places);
+
+            places.forEach((place) => {
+              L.marker([place.lat, place.lng], {
+                icon: L.divIcon({
+                  className: "white-dot",
+                  iconSize: [10, 10],
+                }),
+              })
+                .addTo(map)
+                .bindTooltip(place.name, { permanent: false, direction: "top" })
+                .bindPopup(createPopupContent(place));
+            });
+          })
+          .catch((error) => console.error("Error fetching CSV data:", error));
+      }
+
+      function parseCSV(csvText) {
+        let rows = csvText.split("\n");
+        rows.shift();
+        return rows
+          .map((row) => row.split(","))
+          .map((item) => ({
+            name: item[0],
+            years: item[1],
+            lat: item[2],
+            lng: item[3].trim(),
+          }));
+      }
+
+      function createPopupContent(place) {
+        const years = place.years.split("/");
+
+        let yearsHtml = years
+          .map(
+            (year) =>
+              `<li><a target="_parent" href="https://wiki.hetbsg.nl/landdagen${year.trim()}">${year.trim()}</a></li>`
+          )
+          .join("");
+
+        return `
+                <strong>${place.name}</strong><br>
+
+                ${yearsHtml}
+            `;
+      }
+
+      window.onload = fetchCSVData;
+    </script>
+  </body>
+</html>
